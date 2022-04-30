@@ -1,3 +1,5 @@
+# some search algorithms
+
 def linear(input, target):
     for idx, entry in enumerate(input):
         if entry == target:
