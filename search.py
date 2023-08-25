@@ -6,39 +6,38 @@ def linear(input, target):
             return idx
     return -1
 
-def binary(input, target, idx = None):
-    
-    length = len(input)
+def binary(arr, target):
 
-    if length == 0:
-        return -1
-
-    middle = length//2
-
-    if idx == None:
-        idx = middle
-
-    if input[middle]==target:
-        return idx
-
-    if input[middle]>target:
-        return binary(input[:middle], target, idx-((middle//2)+1))
-    else:
-        return binary(input[middle+1:], target, idx+((middle//2)+1))
-
-    
+    low = 0
+    high = len(arr)
 
 
+    while low < high:
+        middle = (low + high) // 2
+        val = arr[middle]
+
+        if val == target:
+            return True
+        elif val > target:
+            high = middle
+        else:
+            low = middle + 1
+
+    return False
+
+def two_crystal():
+    pass
 
 
 x = [3,1,4,5,9,6,2]
+x_sorted = [1,2,3,4,5,6,9]
 # x = ["apple","banana","pear","rock"]
-y = 3
+
 # y = "rock"
 
 print(sorted(x))
 
 # print(linear(x,y))
 
-print(binary(sorted(x),y))
-
+for y in x:
+    print(binary(sorted(x),y))
